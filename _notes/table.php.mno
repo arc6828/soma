@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Tableset" value="name:TableID;datatype:int,name:Sessile;datatype:int,name:status;datatype:string,name:time;datatype:date" />
+	<infoitem key="UD_Recordset1" value="name:TableID;datatype:int,name:Sessile;datatype:int,name:status;datatype:string,name:time;datatype:date" />
+	<infoitem key="UD_TableSet" value="name:TableID;datatype:int,name:Sessile;datatype:int,name:status;datatype:string,name:time;datatype:date" />
+</info>
