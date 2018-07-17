@@ -6,6 +6,6 @@ $hostname_MyConnect = "localhost";
 $database_MyConnect = "soma";
 $username_MyConnect = "root";
 $password_MyConnect = "rootroot";
-$MyConnect = mysql_pconnect($hostname_MyConnect, $username_MyConnect, $password_MyConnect) or trigger_error(mysql_error(),E_USER_ERROR); 
-mysql_query("Set Names UTF8");
+$MyConnect = mysqli_pconnect($hostname_MyConnect, $username_MyConnect, $password_MyConnect) or trigger_error(mysqli_error(),E_USER_ERROR); 
+mysqli_query("Set Names UTF8");
 ?>

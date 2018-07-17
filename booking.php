@@ -7,7 +7,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -31,11 +31,11 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysql_select_db($database_MyConnect, $MyConnect);
+mysqli_select_db($database_MyConnect, $MyConnect);
 $query_BookingSet = "SELECT * FROM booking";
-$BookingSet = mysql_query($query_BookingSet, $MyConnect) or die(mysql_error());
-$row_BookingSet = mysql_fetch_assoc($BookingSet);
-$totalRows_BookingSet = mysql_num_rows($BookingSet);
+$BookingSet = mysqli_query($query_BookingSet, $MyConnect) or die(mysqli_error());
+$row_BookingSet = mysqli_fetch_assoc($BookingSet);
+$totalRows_BookingSet = mysqli_num_rows($BookingSet);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -80,7 +80,7 @@ $totalRows_BookingSet = mysql_num_rows($BookingSet);
       <td><a href="delete-b.php?id=<?php echo $row_BookingSet['id']; ?>">ลบ</a></td>
       <td><a href="update-b.php?id=<?php echo $row_BookingSet['id']; ?>">แก้ไข</a></td>
     </tr>
-    <?php } while ($row_BookingSet = mysql_fetch_assoc($BookingSet)); ?>
+    <?php } while ($row_BookingSet = mysqli_fetch_assoc($BookingSet)); ?>
   </table>
 </form>
 <p>&nbsp;</p>
@@ -88,5 +88,5 @@ $totalRows_BookingSet = mysql_num_rows($BookingSet);
 </body>
 </html>
 <?php
-mysql_free_result($BookingSet);
+mysqli_free_result($BookingSet);
 ?>

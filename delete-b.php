@@ -7,7 +7,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -35,8 +35,8 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "")) {
   $deleteSQL = sprintf("DELETE FROM booking WHERE id=%s",
                        GetSQLValueString($_GET['id'], "int"));
 
-  mysql_select_db($database_MyConnect, $MyConnect);
-  $Result1 = mysql_query($deleteSQL, $MyConnect) or die(mysql_error());
+  mysqli_select_db($database_MyConnect, $MyConnect);
+  $Result1 = mysqli_query($deleteSQL, $MyConnect) or die(mysqli_error());
 
   $deleteGoTo = "booking.php";
   if (isset($_SERVER['QUERY_STRING'])) {

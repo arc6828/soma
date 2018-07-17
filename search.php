@@ -7,7 +7,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -35,11 +35,11 @@ $colname_Recordset1 = "-1";
 if (isset($_POST['word'])) {
   $colname_Recordset1 = $_POST['word'];
 }
-mysql_select_db($database_MyConnect, $MyConnect);
+mysqli_select_db($database_MyConnect, $MyConnect);
 $query_Recordset1 = sprintf("SELECT * FROM `table` WHERE status LIKE %s", GetSQLValueString("%" . $colname_Recordset1 . "%", "text"));
-$Recordset1 = mysql_query($query_Recordset1, $MyConnect) or die(mysql_error());
-$row_Recordset1 = mysql_fetch_assoc($Recordset1);
-$totalRows_Recordset1 = mysql_num_rows($Recordset1);
+$Recordset1 = mysqli_query($query_Recordset1, $MyConnect) or die(mysqli_error());
+$row_Recordset1 = mysqli_fetch_assoc($Recordset1);
+$totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -65,10 +65,10 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
       <td><?php echo $row_Recordset1['status']; ?></td>
       <td><?php echo $row_Recordset1['time']; ?></td>
     </tr>
-    <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+    <?php } while ($row_Recordset1 = mysqli_fetch_assoc($Recordset1)); ?>
 </table>
 </body>
 </html>
 <?php
-mysql_free_result($Recordset1);
+mysqli_free_result($Recordset1);
 ?>

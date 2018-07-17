@@ -7,7 +7,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -44,8 +44,8 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_POST['name'], "text"),
                        GetSQLValueString($_POST['phon'], "text"));
 
-  mysql_select_db($database_MyConnect, $MyConnect);
-  $Result1 = mysql_query($insertSQL, $MyConnect) or die(mysql_error());
+  mysqli_select_db($database_MyConnect, $MyConnect);
+  $Result1 = mysqli_query($insertSQL, $MyConnect) or die(mysqli_error());
 
   $insertGoTo = "booking.php";
   if (isset($_SERVER['QUERY_STRING'])) {

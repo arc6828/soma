@@ -8,7 +8,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -32,11 +32,11 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysql_select_db($database_MyConnect, $MyConnect);
+mysqli_select_db($database_MyConnect, $MyConnect);
 $query_TableSet = "SELECT * FROM `table`";
-$TableSet = mysql_query($query_TableSet, $MyConnect) or die(mysql_error());
-$row_TableSet = mysql_fetch_assoc($TableSet);
-$totalRows_TableSet = mysql_num_rows($TableSet);
+$TableSet = mysqli_query($query_TableSet, $MyConnect) or die(mysqli_error());
+$row_TableSet = mysqli_fetch_assoc($TableSet);
+$totalRows_TableSet = mysqli_num_rows($TableSet);
 
 ?>
 <style type="text/css" align="center">
@@ -74,7 +74,7 @@ body,td,th {
       <td align="center"><a href="delete.php?TableID=<?php echo $row_TableSet['TableID']; ?>">ลบ </a></td>
       <td align="center"><a href="update.php?TableID=<?php echo $row_TableSet['TableID']; ?>">แก้ไข</a></td>
     </tr>
-    <?php } while ($row_TableSet = mysql_fetch_assoc($TableSet)); ?>
+    <?php } while ($row_TableSet = mysqli_fetch_assoc($TableSet)); ?>
 </table>
 <p>&nbsp;</p>
 <p><a href="insert-table.php"  >เพิ่มข้อมูลโต๊ะ</a></p>
