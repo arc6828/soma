@@ -5,7 +5,7 @@
 $hostname_MyConnect = "localhost";
 $database_MyConnect = "soma";
 $username_MyConnect = "root";
-$password_MyConnect = "rootroot";
+$password_MyConnect = "";
 $MyConnect = mysql_pconnect($hostname_MyConnect, $username_MyConnect, $password_MyConnect) or trigger_error(mysql_error(),E_USER_ERROR); 
 mysql_query("Set Names UTF8");
 ?>
