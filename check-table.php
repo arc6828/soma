@@ -21,9 +21,6 @@ jQuery("#jQueryUICalendar1").datepicker({dateFormat:'yy-mm-dd'});
     <input name="btncheck" type="submit" autofocus="autofocus" id="btncheck" form="form1" value="submit" />
   </p>
   <p></p>
- 
-<?php echo $_POST['ckDate']; ?>
-
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p>&nbsp;</p>

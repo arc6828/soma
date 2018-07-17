@@ -49,7 +49,7 @@ body,td,th {
 
 <title>Data Table</title>
 
-<p><a href="insert-table.php"  >ข้อมูลการจองโต๊ะ</a></p>
+<p>จัดการข้อมูลโต๊ะ</p>
 <form id="form1" name="form1" method="post" action="search.php">
   ค้นหา : 
     <input type="text" name="textfield" id="word" /> 
@@ -76,3 +76,5 @@ body,td,th {
     </tr>
     <?php } while ($row_TableSet = mysql_fetch_assoc($TableSet)); ?>
 </table>
+<p>&nbsp;</p>
+<p><a href="insert-table.php"  >เพิ่มข้อมูลโต๊ะ</a></p>

@@ -1,5 +1,6 @@
 <?php
 include("Connections/MyConnect.php");
+mysql_select_db('$database_MyConnect');
 $arrTime = array('9.00-10.00','10.00-11.00','11.00-12.00','12.00-13.00','13.00-14.00','14.00-15.00','15.00-16.00');
 $arrCourt=array(1,2,3,4);
 
@@ -12,7 +13,10 @@ $arrCourt=array(1,2,3,4);
 </head>
 
 <body>
-<?php
+<p>ตารางการจองวันที่ :<?php echo $_POST['ckDate']; ?></p>
+<p>&nbsp;</p>
+<p>
+  <?php
 $strTable = '<table border="1" width="800" align="center"><tr><td>จำวนที่หนัง/เวลา</td>';
 foreach($arrTime as $time){
 	  $strTable.='<td>'.$time.'</td>';
@@ -21,18 +25,23 @@ foreach($arrTime as $time){
 $strTable.='</tr>';
 foreach($arrCourt as $courtNum){
 	$strTable.='<tr><td>'.$courtNum.'</td>';
-	$sql="Select * Erom court_booking Where court_nu={$courtNum} Order by court_time_booking";
-	$rs = mysql_query($sql);
+	$sql="Select * Erom booking Where court_num={$courtNum} and court_date_booking='{$_POST['ckDate']}'Order by court_time_booking ASC ";
+	$rs = mysql_query($sql) or die(mysql_error());
+	$run=0;
 	foreach($arrTime as $time){
-		if($time == mysql_result($rs,$run,'court_time_booking')){
-			$strTable.='<td>'.$time.'</td>';
+		if(mysql_num_rows($rs)>$run&&$time == mysql_result($rs,$run,2)){
+			$strTable.='<td>จองแล้ว</td>';
+			$run++;
+		}else{
+			$strTable.='<td>ว่าง</td>';
 			}
 		
 				}
+		$strTable.='</tr>';
 	}
 
 echo $strTable ,'</table>';
 ?>
-
+</p>
 </body>
 </html>

@@ -81,9 +81,46 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 </head>
 
 <body>
-<p>Admin Area </p>
+<p>Admin Area</p>
+<p> ขอต้อนรับ : <?php echo $_SESSION['MM_Username']; ?></p>
+<form id="form1" name="form1" method="post" action="">
+  <table width="760" border="1">
+    <tr>
+      <td><a href="insertmember.php">จัดการข้อมูลสมาชิก</a></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><a href="../table.php">จัดการข้อมูลโต๊ะ</a></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><a href="../booking.php">จัดการข้อมูลการจองโต๊ะ</a></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
 <p></p>
-<p>ขอต้อนรับ : <?php echo $_SESSION['MM_Username']; ?></p>
+<p></p>
+<p></p>
+<p></p>
 <p></p>
 <a href="<?php echo $logoutAction ?>">Log Out / ออกจากระบบ</a>
 </body>

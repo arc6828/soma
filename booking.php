@@ -57,6 +57,7 @@ $totalRows_BookingSet = mysql_num_rows($BookingSet);
 <body>
 <form id="form1" name="form1" method="post" action="">
   <p>จัดการข้อมูลการจองโต๊ะ</p>
+  <p><a href="insert-booking.php">เพิ่มข้อมูลการจองโต๊ะ</a></p>
   <table border="1" align="center">
     <tr>
       <td width="105">id</td>
@@ -65,19 +66,17 @@ $totalRows_BookingSet = mysql_num_rows($BookingSet);
       <td width="120">date</td>
       <td width="126">name</td>
       <td width="120">phon</td>
-      <td width="36">&nbsp;</td>
       <td width="35">&nbsp;</td>
       <td width="35">&nbsp;</td>
     </tr>
     <?php do { ?>
     <tr>
       <td><?php echo $row_BookingSet['id']; ?></td>
-      <td><?php echo $row_BookingSet['tableid']; ?></td>
-      <td><?php echo $row_BookingSet['time']; ?></td>
-      <td><?php echo $row_BookingSet['date']; ?></td>
+      <td><?php echo $row_BookingSet['court_num']; ?></td>
+      <td><?php echo $row_BookingSet['court_time_booking']; ?></td>
+      <td><?php echo $row_BookingSet['court_date_booking']; ?></td>
       <td><?php echo $row_BookingSet['name']; ?></td>
       <td><?php echo $row_BookingSet['phon']; ?></td>
-      <td><a href="insert-booking.php">เพิ่ม</a></td>
       <td><a href="delete-b.php?id=<?php echo $row_BookingSet['id']; ?>">ลบ</a></td>
       <td><a href="update-b.php?id=<?php echo $row_BookingSet['id']; ?>">แก้ไข</a></td>
     </tr>

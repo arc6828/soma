@@ -37,10 +37,10 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE booking SET tableid=%s, `time`=%s, `date`=%s, name=%s, phon=%s WHERE id=%s",
-                       GetSQLValueString($_POST['tableid'], "text"),
-                       GetSQLValueString($_POST['time'], "text"),
-                       GetSQLValueString($_POST['date'], "date"),
+  $updateSQL = sprintf("UPDATE booking SET court_num=%s, `court_time_booking`=%s, `court_date_booking`=%s, name=%s, phon=%s WHERE id=%s",
+                       GetSQLValueString($_POST['court_num'], "text"),
+                       GetSQLValueString($_POST['court_time_booking'], "text"),
+                       GetSQLValueString($_POST['court_date_booking'], "date"),
                        GetSQLValueString($_POST['name'], "text"),
                        GetSQLValueString($_POST['phon'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
