@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<form action="show-table.php" name="form1" id="form1" novalidate="novalidate">
+<form action="show-table.php" name="form1" id="form1" novalidate="novalidate" method="get" >
   <p>ตรวจสอบสถานะการจองโต๊ะ </p>
   <p>
     <input type="text" size="30" value="Click to show datepicker" name="ckDate" id="jQueryUICalendar1"/> 

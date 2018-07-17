@@ -8,7 +8,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
+  //$theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -32,9 +32,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysqli_select_db($database_MyConnect, $MyConnect);
+//mysqli_select_db($database_MyConnect, $MyConnect);
 $query_TableSet = "SELECT * FROM `table`";
-$TableSet = mysqli_query($query_TableSet, $MyConnect) or die(mysqli_error());
+$TableSet = mysqli_query( $MyConnect,$query_TableSet) or die(mysqli_error());
 $row_TableSet = mysqli_fetch_assoc($TableSet);
 $totalRows_TableSet = mysqli_num_rows($TableSet);
 

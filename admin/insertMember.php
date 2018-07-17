@@ -7,7 +7,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
+  //$theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
 
   switch ($theType) {
     case "text":
@@ -45,7 +45,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
                        GetSQLValueString($_POST['phon'], "text"),
                        GetSQLValueString($_POST['email'], "text"));
 
-  mysqli_select_db($database_MyConnect, $MyConnect);
+  //mysqli_select_db($database_MyConnect, $MyConnect);
   $Result1 = mysqli_query($insertSQL, $MyConnect) or die(mysqli_error());
 
   $insertGoTo = "member.php";
@@ -56,9 +56,9 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
   header(sprintf("Location: %s", $insertGoTo));
 }
 
-mysqli_select_db($database_MyConnect, $MyConnect);
+//mysqli_select_db(, $MyConnect$database_MyConnect);
 $query_Recordset1 = "SELECT * FROM admin_login";
-$Recordset1 = mysqli_query($query_Recordset1, $MyConnect) or die(mysqli_error());
+$Recordset1 = mysqli_query($MyConnect, $query_Recordset1) or die(mysqli_error());
 $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 ?>

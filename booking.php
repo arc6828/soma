@@ -31,9 +31,9 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysqli_select_db($database_MyConnect, $MyConnect);
+//mysqli_select_db($database_MyConnect, $MyConnect);
 $query_BookingSet = "SELECT * FROM booking";
-$BookingSet = mysqli_query($query_BookingSet, $MyConnect) or die(mysqli_error());
+$BookingSet = mysqli_query($MyConnect, $query_BookingSet) or die(mysqli_error());
 $row_BookingSet = mysqli_fetch_assoc($BookingSet);
 $totalRows_BookingSet = mysqli_num_rows($BookingSet);
 ?>

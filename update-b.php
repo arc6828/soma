@@ -3,11 +3,12 @@
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
+  //require_once('Connections/MyConnect.php');
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysqli_escape_string($theValue);
+  //$theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($MyConnect, $theValue) : mysqli_escape_string($MyConnect,$theValue);
 
   switch ($theType) {
     case "text":
@@ -45,8 +46,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['phon'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
 
-  mysqli_select_db($database_MyConnect, $MyConnect);
-  $Result1 = mysqli_query($updateSQL, $MyConnect) or die(mysqli_error());
+  //mysqli_select_db($MyConnect$database_MyConnect, );
+  $Result1 = mysqli_query($MyConnect, $updateSQL) or die(mysqli_error());
 
   $updateGoTo = "booking.php";
   if (isset($_SERVER['QUERY_STRING'])) {
@@ -60,9 +61,9 @@ $colname_Recordset1 = "-1";
 if (isset($_GET['id'])) {
   $colname_Recordset1 = $_GET['id'];
 }
-mysqli_select_db($database_MyConnect, $MyConnect);
+//mysqli_select_db($database_MyConnect, $MyConnect);
 $query_Recordset1 = sprintf("SELECT * FROM booking WHERE id LIKE %s", GetSQLValueString("%" . $colname_Recordset1 . "%", "text"));
-$Recordset1 = mysqli_query($query_Recordset1, $MyConnect) or die(mysqli_error());
+$Recordset1 = mysqli_query($MyConnect, $query_Recordset1) or die(mysqli_error());
 $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
 ?>
@@ -86,15 +87,15 @@ $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">รหัสโต๊ะ:</td>
-      <td><input type="text" name="tableid" value="<?php echo htmlentities($row_Recordset1['tableid'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="court_num" value="<?php echo htmlentities($row_Recordset1['court_num'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">เวลาจอง:</td>
-      <td><input type="text" name="time" value="<?php echo htmlentities($row_Recordset1['time'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="court_time_booking" value="<?php echo htmlentities($row_Recordset1['court_time_booking'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">วันที่จอง:</td>
-      <td><input type="text" name="date" value="<?php echo htmlentities($row_Recordset1['date'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
+      <td><input type="text" name="court_date_booking" value="<?php echo htmlentities($row_Recordset1['court_date_booking'], ENT_COMPAT, 'utf-8'); ?>" size="32" /></td>
     </tr>
     <tr valign="baseline">
       <td nowrap="nowrap" align="right">ชื่อผู้จอง:</td>
